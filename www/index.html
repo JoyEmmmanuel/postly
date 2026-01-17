@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postly — Home</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="navbar container">
+    <h1 class="app-title">Postly</h1>
+
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <button class="menu-close hidden" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <nav class="nav-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> <span>Home</span></a>
+
+      <div class="nav-dropdown">
+        <a class="dropdown-toggle">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Categories</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </a>
+        <div class="dropdown-menu" id="categoryDropdown">
+          <!-- Categories injected here -->
+        </div>
+      </div>
+
+      <a href="about.html"><i class="fa-solid fa-info-circle"></i> <span>About</span></a>
+
+      <!-- USER MENU -->
+      <div id="userMenu" class="user-menu">
+        <a href="login.html"><i class="fa-solid fa-user"></i> <span>Login</span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN APP WRAPPER -->
+<main class="app">
+  <section class="feed" id="feed"></section>
+</main>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  &copy; 2026 Postly. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script src="js/config.js"></script>
+<script src="js/posts.js"></script>
+<script src="js/index.js"></script>
+<script src="js/crud.js"></script>
+</body>
+</html>

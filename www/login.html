@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postly — Login</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+  <main class="auth-page">
+    <section class="auth-card">
+
+      <!-- Brand -->
+      <div class="auth-brand">
+        <h1>Postly</h1>
+      </div>
+
+      <header class="auth-header">
+        <h2>Welcome back</h2>
+        <p class="auth-subtitle">Sign in to continue writing</p>
+      </header>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" novalidate>
+        <label class="sr-only" for="login-username">Username or Email</label>
+        <input
+          type="text"
+          id="login-username"
+          placeholder="Username or Email"
+          autocomplete="username"
+          required
+        />
+
+        <label class="sr-only" for="login-password">Password</label>
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Password"
+          autocomplete="current-password"
+          required
+        />
+
+        <button type="submit" class="auth-button">
+          Login
+        </button>
+      </form>
+
+      <!-- Error -->
+      <p id="login-error" class="auth-error" aria-live="polite"></p>
+
+      <div class="auth-divider"></div>
+
+      <!-- Switch -->
+      <p class="auth-switch">
+        Don’t have an account?
+        <a href="signup.html">Create one</a>
+      </p>
+
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

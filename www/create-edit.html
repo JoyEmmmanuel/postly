@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postly — Create/Edit Post</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="navbar container">
+    <h1 class="app-title">Postly</h1>
+
+    <button class="menu-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <button class="menu-close hidden" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+
+    <nav class="nav-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <div class="nav-dropdown">
+        <a class="dropdown-toggle"><i class="fa-solid fa-layer-group"></i> Categories <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <div class="dropdown-menu" id="categoryDropdown"></div>
+      </div>
+      <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+      <a href="#" id="userMenu"></a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN FORM -->
+<main class="app">
+  <section class="create-edit-card">
+    <h2 id="formTitle">Create Post</h2>
+
+    <form id="createEditForm">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="Post title" required>
+
+      <label for="content">Content</label>
+      <textarea id="content" placeholder="Write your post here..." required></textarea>
+
+      <button type="submit" class="auth-button">Save Post</button>
+    </form>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  &copy; 2026 Postly. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script src="js/config.js"></script>
+<script src="js/index.js"></script>
+<script src="js/crud.js"></script>
+</body>
+</html>
