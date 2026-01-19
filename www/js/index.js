@@ -81,38 +81,34 @@ async function loadCategories() {
 
 function setupUserMenu() {
   const userMenu = document.getElementById("userMenu");
-  const token = localStorage.getItem("jwtToken"); // match auth.js
+  const token = localStorage.getItem("jwtToken");
+  const username = localStorage.getItem("user") || "User";
 
   if (token) {
-    const username = localStorage.getItem("user") || "User";
+    userMenu.innerHTML = `
+      <div class="user-dropdown">
+        <button class="user-toggle">
+          <i class="fa-solid fa-user"></i>
+          <span>${username}</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="user-menu">
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+    `;
 
-  userMenu.innerHTML = `
-  <div class="user-dropdown">
-    <button class="user-toggle">
-      <i class="fa-solid fa-user"></i>
-      <span>${username}</span>
-      <i class="fa-solid fa-chevron-down"></i>
-    </button>
+    const userDropdown = document.querySelector(".user-dropdown");
+    const userToggle = document.querySelector(".user-toggle");
 
-    <div class="user-menu">
-      <a href="#" id="logoutBtn">Logout</a>
-    </div>
-  </div>
-`;
-const userDropdown = document.querySelector(".user-dropdown");
-const userToggle = document.querySelector(".user-toggle");
+    userToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle("active");
+    });
 
-if (userDropdown && userToggle) {
-  userToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    userDropdown.classList.toggle("active");
-  });
-
-  document.addEventListener("click", () => {
-    userDropdown.classList.remove("active");
-  });
-}
-
+    document.addEventListener("click", () => {
+      userDropdown.classList.remove("active");
+    });
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
       localStorage.removeItem("jwtToken");
