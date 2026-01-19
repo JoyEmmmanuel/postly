@@ -144,3 +144,4 @@ document.addEventListener("deviceready", function () {
   });
 
 });
+
