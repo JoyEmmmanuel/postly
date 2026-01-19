@@ -36,15 +36,23 @@ function setupMobileMenu() {
    CATEGORY DROPDOWN TOGGLE
 ========================= */
 function setupCategoryDropdown() {
+  const wrapper = document.querySelector(".nav-dropdown");
   const toggle = document.querySelector(".dropdown-toggle");
-  const dropdown = document.querySelector(".nav-dropdown .dropdown-menu");
 
-  if (!toggle || !dropdown) return;
+  if (!wrapper || !toggle) return;
 
-  toggle.addEventListener("click", () => {
-    dropdown.classList.toggle("active");
+  toggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    wrapper.classList.toggle("active");
   });
 }
+
+document.addEventListener("click", (e) => {
+  const wrapper = document.querySelector(".nav-dropdown");
+  if (wrapper && !wrapper.contains(e.target)) {
+    wrapper.classList.remove("active");
+  }
+});
 
 /* =========================
    LOAD CATEGORIES
@@ -71,26 +79,43 @@ async function loadCategories() {
   }
 }
 
-/* =========================
-   USER MENU / LOGIN STATUS
-========================= */
 function setupUserMenu() {
   const userMenu = document.getElementById("userMenu");
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("jwtToken"); // match auth.js
 
   if (token) {
     const username = localStorage.getItem("user") || "User";
 
-    userMenu.innerHTML = `
-      <i class="fa-solid fa-user"></i> ${username}
-      <div class="dropdown">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="#" id="logoutBtn">Logout</a>
-      </div>
-    `;
+  userMenu.innerHTML = `
+  <div class="user-dropdown">
+    <button class="user-toggle">
+      <i class="fa-solid fa-user"></i>
+      <span>${username}</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+
+    <div class="user-menu">
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+  </div>
+`;
+const userDropdown = document.querySelector(".user-dropdown");
+const userToggle = document.querySelector(".user-toggle");
+
+if (userDropdown && userToggle) {
+  userToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    userDropdown.classList.toggle("active");
+  });
+
+  document.addEventListener("click", () => {
+    userDropdown.classList.remove("active");
+  });
+}
+
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
-      localStorage.removeItem("token");
+      localStorage.removeItem("jwtToken");
       localStorage.removeItem("user");
       window.location.href = "login.html";
     });
@@ -98,3 +123,24 @@ function setupUserMenu() {
     userMenu.innerHTML = `<a href="login.html"><i class="fa-solid fa-user"></i> Login</a>`;
   }
 }
+
+
+
+document.addEventListener("deviceready", function () {
+
+  FirebasePlugin.getToken(
+    function (token) {
+      console.log("FCM TOKEN:", token);
+      alert("FCM Token generated");
+    },
+    function (error) {
+      console.error(error);
+      alert("FCM token error");
+    }
+  );
+
+  FirebasePlugin.onMessageReceived(function (message) {
+    alert("Notification received: " + message.title);
+  });
+
+});

@@ -27,7 +27,7 @@ function setupCreatePost() {
     if (!title || !content) return alert("Title and content are required.");
 
     try {
-      const res = await fetch(`${CONFIG.API_BASE}/posts`, {
+      const res = await fetch(`${API_BASE}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function setupEditPost() {
 
   async function loadPost() {
     try {
-      const res = await fetch(`${CONFIG.API_BASE}/posts/${postId}?_embed`);
+      const res = await fetch(`${API_BASE}/posts/${postId}?_embed`);
       if (!res.ok) throw new Error("Failed to fetch post");
       const post = await res.json();
 
@@ -92,7 +92,7 @@ function setupEditPost() {
     if (!title || !content) return alert("Title and content are required.");
 
     try {
-      const res = await fetch(`${CONFIG.API_BASE}/posts/${postId}`, {
+      const res = await fetch(`${API_BASE}/posts/${postId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -112,30 +112,3 @@ function setupEditPost() {
   });
 }
 
-/* =========================
-   DELETE POST
-========================= */
-async function deletePost(postId) {
-  const token = getToken();
-  if (!token) return alert("You must log in to delete a post.");
-
-  const confirmed = confirm("Are you sure you want to delete this post?");
-  if (!confirmed) return;
-
-  try {
-    const res = await fetch(`${CONFIG.API_BASE}/posts/${postId}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-    });
-
-    if (!res.ok) throw new Error("Failed to delete post");
-
-    alert("Post deleted successfully!");
-    window.location.reload(); // refresh posts
-  } catch (err) {
-    console.error(err);
-    alert("Error deleting post");
-  }
-}

@@ -18,7 +18,7 @@
   />
 
   <!-- Main CSS -->
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="www/css/index.css" />
 </head>
 <body class="single-post-page">
 
@@ -35,20 +35,27 @@
       <i class="fa-solid fa-xmark"></i>
     </button>
 
-     <nav class="nav-links"> <a href="index.html"> <i class="fa-solid fa-house"></i> <span>Home</span> </a> 
- <div class="nav-dropdown">
-  <a class="dropdown-toggle">
-    <i class="fa-solid fa-layer-group"></i>
-    <span>Categories</span>
-    <i class="fa-solid fa-chevron-down chevron"></i>
-  </a>
-  <div class="dropdown-menu" id="categoryDropdown">
-    <!-- Categories injected here -->
-  </div>
-</div>
+    <nav class="nav-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> <span>Home</span></a>
 
-      <a href="about.html"> <i class="fa-solid fa-info-circle"></i> <span>About</span> </a> 
-      <a href="user.html"> <i class="fa-solid fa-user"></i> <span>Login</span> </a> </nav>
+      <div class="nav-dropdown">
+        <a class="dropdown-toggle">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Categories</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </a>
+        <div class="dropdown-menu" id="categoryDropdown">
+          <!-- Categories injected here -->
+        </div>
+      </div>
+
+      <a href="about.html"><i class="fa-solid fa-info-circle"></i> <span>About</span></a>
+
+      <!-- USER MENU -->
+      <div id="userMenu" class="user-menu">
+        <a href="login.html"><i class="fa-solid fa-user"></i> <span>Login</span></a>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -63,8 +70,9 @@
 </footer>
 
 <!-- JS -->
-<script src="js/config.js"></script>
-<script src="js/singlepost.js"></script>
-<script src="js/index.js"></script>
+<script src="www/js/config.js"></script>
+<script src="www/js/singlepost.js"></script>
+<script src="www/js/index.js"></script>
+<script src="www/js/crud.js"></script>
 </body>
 </html>

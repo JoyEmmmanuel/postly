@@ -210,8 +210,8 @@ body {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-top-left-radius: var(--radius-md);
-  border-top-right-radius: var(--radius-md);
+  border-radius: var(--radius-md);
+
   display: block;
 }
 
@@ -520,6 +520,111 @@ body {
 .auth-switch a:hover {
   text-decoration: underline;
 }
+
+
+
+
+/* ============================
+   Create/Edit Post Card Styling
+============================ */
+.create-edit-card {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2.5rem 3rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.create-edit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+#createEditForm h2,
+.create-edit-card h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+#createEditForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+#createEditForm input,
+#createEditForm textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+#createEditForm input:focus,
+#createEditForm textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(255, 122, 24, 0.2);
+}
+
+#createEditForm textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+#createEditForm button {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+#createEditForm button:hover {
+  background-color: #ff5d00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 122, 24, 0.3);
+}
+
+#createEditForm button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(255, 122, 24, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .create-edit-card {
+    padding: 2rem 1.5rem;
+    margin: 2rem 1rem;
+  }
+  #createEditForm h2 {
+    font-size: 1.6rem;
+  }
+  
+}
+
+@media (min-width: 1024px) {
+  .create-edit-card {
+    padding: 3rem 3.5rem;
+  }
+}
+
 /* Tablet + Desktop (min-width: 769px) */
 /* Mobile menu adjustments */
 @media (max-width: 768px) {
@@ -567,58 +672,6 @@ body {
     color: #ff7a18;
   }
 /* CRUD Page */
-.crud-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  padding: 16px;
-}
-
-.crud-card {
-  background-color: var(--color-card);
-  padding: 24px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  width: 100%;
-  max-width: 500px;
-}
-
-.crud-card h1 {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  color: var(--color-primary);
-  text-align: center;
-}
-
-.crud-card input,
-.crud-card textarea {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  resize: vertical;
-}
-
-.crud-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: var(--radius-sm);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.crud-card button:hover {
-  background-color: #ff5d00;
-}
 
 .auth-error {
   color: red;
@@ -668,7 +721,7 @@ body {
 
 #createEditForm button {
   margin-top: 1rem;
-  background: #3b82f6;
+  background: var(--color-primary);
   color: #fff;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -678,7 +731,7 @@ body {
 }
 
 #createEditForm button:hover {
-  background: #2563eb;
+  background: #ff7a18;
 }
 
 /* Responsive */
@@ -744,4 +797,48 @@ body {
   .post-image {
     height: 220px;
   }
+}
+
+/* USER MENU FIX */
+.user-dropdown {
+  position: relative;
+}
+
+.user-toggle {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.user-toggle {
+  font-size: 16px;     
+}
+
+.user-toggle i {
+  font-size: 16px;     
+}
+.user-toggle:hover {
+
+  color: #ff7a18;
+}
+
+/* Hidden by default */
+.user-dropdown .user-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  min-width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 1000;
+}
+
+/* Visible state */
+.user-dropdown.active .user-menu {
+  display: block;
 }
