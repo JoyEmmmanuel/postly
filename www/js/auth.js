@@ -1,12 +1,7 @@
-/**
- * auth.js — handles login, JWT token storage, and logout
- */
-
-document.addEventListener("DOMContentLoaded", () => {
+ocument.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
   const loginError = document.getElementById("login-error");
 
-  // Handle login form submission
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -36,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("jwtToken", data.token);
         localStorage.setItem("user", data.user_display_name || username);
 
-        // Redirect to homepage after successful login
+        // Redirect to homepage
         window.location.href = "index.html";
       } catch (err) {
         console.error("Login error:", err);
@@ -46,33 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Optional: Auto-redirect to homepage if user is already logged in
+  // Redirect if already logged in
   if (isLoggedIn() && window.location.pathname.endsWith("login.html")) {
     window.location.href = "index.html";
   }
 });
 
-/* =========================
-   Helper Functions
-========================= */
+/* ========================= Helper Functions ========================= */
 
-/**
- * Get JWT token from localStorage
- */
 function getToken() {
   return localStorage.getItem("jwtToken");
 }
 
-/**
- * Check if user is logged in
- */
 function isLoggedIn() {
   return !!getToken();
 }
 
-/**
- * Logout user and redirect to login page
- */
 function logout() {
   localStorage.removeItem("jwtToken");
   localStorage.removeItem("user");
